@@ -11,3 +11,4 @@ linter.iml
 /.vscode
 /.history
 /doc/lints/
+.DS_Store

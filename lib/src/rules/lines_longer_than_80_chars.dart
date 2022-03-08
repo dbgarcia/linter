@@ -10,11 +10,11 @@ import '../analyzer.dart';
 
 const _cr = '\r';
 
-const _desc = r'Avoid lines longer than 80 characters.';
+const _desc = r'Avoid lines longer than 20 characters.';
 
 const _details = r'''
 
-**AVOID** lines longer than 80 characters
+**AVOID** lines longer than 20 characters
 
 Readability studies show that long lines of text are harder to read because your
 eye has to travel farther when moving to the beginning of the next line. This is
@@ -189,7 +189,7 @@ class _Visitor extends SimpleAstVisitor {
       } else {
         end = lineInfo.getOffsetOfLine(i + 1) - 1;
         var length = end - start;
-        if (length > 80) {
+        if (length > 20) {
           if (context.currentUnit.content[end] == _lf &&
               context.currentUnit.content[end - 1] == _cr) {
             end--;
@@ -197,11 +197,11 @@ class _Visitor extends SimpleAstVisitor {
         }
       }
       var length = end - start;
-      if (length > 80) {
+      if (length > 20) {
         // Use 80 as the start of the range so that navigating to the lint
         // will place the caret at exactly the location where the line needs
         // to wrap.
-        var line = _LineInfo(index: i, offset: start + 80, end: end);
+        var line = _LineInfo(index: i, offset: start + 20, end: end);
         longLines.add(line);
       }
     }
